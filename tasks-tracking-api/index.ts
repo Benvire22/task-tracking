@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import config from "@/config";
+import config from "./config";
 
 const app = express();
 const port = 8000;

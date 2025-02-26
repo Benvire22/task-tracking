@@ -6,7 +6,7 @@ dotenv.config();
 
 const rootPath = __dirname;
 
-const corsWhiteList = process.env.CORS_WHITE_LIST?.split(",") || [];
+const corsWhiteList = process.env.CORS_WHITELIST?.split(",") || [];
 
 const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
@@ -22,7 +22,7 @@ const config = {
   rootPath,
   publicPath: path.join(rootPath, "public"),
   corsOptions,
-  database: process.env.CORS_DATABASE_URL,
+  database: process.env.DATABASE_URL,
 };
 
 export default config;
