@@ -18,7 +18,7 @@ const run = async () => {
   await mongoose.connect(config.database);
 
   app.listen(port, () => {
-    console.log(`started on ${port} port`);
+    console.log(`Server started on ${port} port`);
   });
 
   process.on("exit", () => {

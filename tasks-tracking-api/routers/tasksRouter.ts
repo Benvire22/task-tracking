@@ -52,11 +52,43 @@ tasksRouter.put("/:id", async (req, res, next) => {
       res.status(404).send({ message: "Title is required!" });
     }
 
-    const task = await Task.findOneAndUpdate({ id }, {
-      title,
-      description,
-      status,
-    }, { new: true });
+    const task = await Task.findOneAndUpdate(
+      { id },
+      {
+        title,
+        description,
+        status,
+      },
+      { new: true },
+    );
+
+    if (!task) {
+      res.status(404).send({ message: "Task not found!" });
+    }
+
+    res.status(200).send({ message: "Task was created!" });
+    return next();
+  } catch (e) {
+    return next(e);
+  }
+});
+
+tasksRouter.patch("/:id/status", async (req, res, next) => {
+  try {
+    const { status } = req.body;
+    const id = req.params.id;
+
+    if (!status) {
+      res.status(404).send({ message: "Status is required!" });
+    }
+
+    const task = await Task.findOneAndUpdate(
+      { id },
+      {
+        status,
+      },
+      { new: true },
+    );
 
     if (!task) {
       res.status(404).send({ message: "Task not found!" });
