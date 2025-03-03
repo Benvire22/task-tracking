@@ -12,7 +12,7 @@ const TaskSchema = new Schema<TaskFields>({
   status: {
     required: true,
     type: String,
-    enum: ["backlog", "To be completed", "In progress", "complete"],
+    enum: ["Backlog", "To be completed", "In progress", "Complete"],
   },
   createdAt: {
     type: Date,
